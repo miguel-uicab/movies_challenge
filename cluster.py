@@ -1,37 +1,33 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Imports
 import os
 import pandas as pd
 import numpy as np
 import pickle
 from sklearn.cluster import AgglomerativeClustering
 from EDA_functions import clean_string
+from extras import get_config
 
 
 def cluster_movies(data_movie=None, n_clusters=1000):
+    "Lleva a cabo un clúster jerárquico para las películas."
+    "El algortimo de clúster jerárquico agrupa los datos basándose "
+    "en la distancia entre cada uno y buscando que los datos "
+    "que están dentro de un clúster sean los más similares entre sí."
+
+    config = get_config()
     data_movie['genres_list'] = list(map(clean_string,
-                                    data_movie['genres']))
+                                     data_movie['genres']))
     list_genres = list(data_movie['genres_list'])
     total_genres = set().union(*list_genres)
     total_genres = list(total_genres)
 
     for genre in total_genres:
         data_movie[f'genre_{genre}'] = data_movie.apply(lambda row: 1 if genre in row['genres_list'] else 0,
-                                              axis=1)
+                                                        axis=1)
 
-    interest_columns = ['movieId', 'genre_film-noir',
-                        'genre_no genres listed', 'genre_drama',
-                        'genre_mystery', 'genre_animation',
-                        'genre_horror', 'genre_fantasy',
-                        'genre_war', 'genre_crime', 'genre_comedy',
-                        'genre_western', 'genre_adventure',
-                        'genre_documentary', 'genre_imax',
-                        'genre_action', 'genre_children',
-                        'genre_musical', 'genre_thriller',
-                        'genre_romance', 'genre_sci-fi']
-
+    interest_columns = config['names_for_cluster']
     df_movie = data_movie[interest_columns]
     df_movie = df_movie.set_index(['movieId'])
 

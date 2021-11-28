@@ -13,6 +13,9 @@ logging.basicConfig(format=logging_format, datefmt='%Y-%m-%d %H:%M:%S',
 
 
 def total_past_extractor(is_data_train=True):
+    "Lleva a cabo la construcción de características de los usuarios de manera"
+    "de manera global y utilizando la información del pasado. "
+
     config = get_config()
     logging.info('SE CARGAN LAS DATAS NECESARIAS.')
     # Data redundante completa ################################################
@@ -73,6 +76,7 @@ def total_past_extractor(is_data_train=True):
                                                       datas_users,
                                                       how="left",
                                                       on=["userId", "time_day"])
+
         logging.info('SE GUARDA DATA DE ENTRENAMIENTO.')
         data_path = 'final_data_train.sav'
         pickle.dump(data_train_no_duplicates_info_past,
@@ -82,6 +86,7 @@ def total_past_extractor(is_data_train=True):
                                         datas_users,
                                         how="left",
                                         on=["userId", "time_day"])
+
         logging.info('SE GUARDA DATA DE PRUEBA.')
         # data_path = 'final_data_test.sav'
         data_path = 'final_data_test_complete.sav'

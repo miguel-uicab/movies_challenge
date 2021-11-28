@@ -1,3 +1,14 @@
+names_for_cluster: ['movieId', 'genre_film-noir',
+                    'genre_no genres listed', 'genre_drama',
+                    'genre_mystery', 'genre_animation',
+                    'genre_horror', 'genre_fantasy',
+                    'genre_war', 'genre_crime', 'genre_comedy',
+                    'genre_western', 'genre_adventure',
+                    'genre_documentary', 'genre_imax',
+                    'genre_action', 'genre_children',
+                    'genre_musical', 'genre_thriller',
+                    'genre_romance', 'genre_sci-fi']
+
 names_interest_cum: ['time_day', 'movies', 'genre_crime',
                       'genre_no genres listed', 'genre_adventure',
                       'genre_romance', 'genre_horror', 'genre_drama',
