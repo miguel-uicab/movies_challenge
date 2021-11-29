@@ -156,6 +156,7 @@ def TwoSampleT2Test(X=None, Y=None, alpha=0.05):
     print(f"p-value: {p_value}")
 
 
+#  monotone_constraints='(-1,-1,-1,-1,-1,1,-1,-1,-1,-1,1,0,-1,1,1,1,0,0,1,0)',
 def learning_curve(X_train=None, X_test=None,
                    y_train=None, y_test=None,
                    Pipeline=None, random_state=0,
@@ -171,7 +172,6 @@ def learning_curve(X_train=None, X_test=None,
                           booster='gbtree',
                           eval_metric=eval_metric,
                           tree_method='approx',
-                          monotone_constraints='(-1,-1,-1,-1,-1,1,-1,-1,-1,-1,1,0,-1,1,1,1,0,0,1,0)',
                           n_estimators=n_estimators,
                           reg_alpha=reg_alpha,
                           learning_rate=learning_rate,
