@@ -40,6 +40,9 @@ tag_info = reduce(lambda left, right: pd.merge(left, right,
                                                on=["userId", "movieId"]),
                   dfs)
 tag_info.sort_values(by='min_tag_time_day', ascending=False, inplace=True)
+data_path='tags_info.sav'
+pickle.dump(tag_info, open(data_path, 'wb'))
+
 
 d_ind = tag_info[tag_info['userId']==130827]
 
